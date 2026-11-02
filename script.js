@@ -32,3 +32,15 @@ document.querySelectorAll('.more[data-part]').forEach(link => {
     document.querySelector('#quote [name="parts"]').value = `I'd like a quote for ${link.dataset.part}: `;
   });
 });
+
+// Scroll to in-page sections without leaving #hash in the URL, so a refresh stays put
+document.addEventListener('click', e => {
+  const link = e.target.closest('a[href^="#"]');
+  if (!link) return;
+  const id = link.getAttribute('href').slice(1);
+  const target = id ? document.getElementById(id) : document.body;
+  if (!target) return;
+  e.preventDefault();
+  target.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
+  history.replaceState(null, '', location.pathname + location.search);
+});
