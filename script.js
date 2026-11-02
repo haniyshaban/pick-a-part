@@ -26,3 +26,9 @@ document.getElementById('quote').addEventListener('submit', e => {
 });
 
 document.getElementById('yr').textContent = new Date().getFullYear();
+
+document.querySelectorAll('.card[data-part]').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelector('#quote [name="parts"]').value = `I'd like a quote for ${card.dataset.part}: `;
+  });
+});
