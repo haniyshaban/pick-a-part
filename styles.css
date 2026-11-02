@@ -190,3 +190,9 @@ address strong { color: var(--text); }
 .cards.products .card .more { justify-self: start; text-decoration: none; }
 .cards.products .card .more:hover, .cards.products .card .more:focus-visible { opacity: 1; text-decoration: underline; }
 .cards.products .card:hover { transform: none; }
+
+/* Hero: no big logo or dead space on tablets and phones (logo is already in the header) */
+@media (max-width: 900px) {
+  .hero { padding: 32px 0 36px; background: radial-gradient(ellipse at 50% 0%, rgba(91,82,117,.3), transparent 70%); }
+  .hero-logo { display: none; }
+}
